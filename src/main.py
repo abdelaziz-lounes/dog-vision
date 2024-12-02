@@ -4,7 +4,7 @@ from predict import predict
 import os
 
 DATA_DIR = "data"
-MODEL_PATH = os.path.join("models", "dog_breed_model.h5")
+MODEL_PATH = os.path.join("models", "20241201-18411733078518-all-images-Adam.h5")
 
 # Preprocess data
 X_train, X_val, y_train, y_val, unique_breeds = preprocess_data(DATA_DIR)
