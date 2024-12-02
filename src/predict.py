@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import tf_keras
 
 def process_image(image_path, img_size=224):
     """
@@ -21,7 +22,7 @@ def predict(model_path, image_paths, unique_breeds):
     """
     Loads a trained model and predicts labels for the given images.
     """
-    model = tf.keras.models.load_model(model_path)
+    model = tf_keras.models.load_model(model_path)
     images = [process_image(image_path) for image_path in image_paths]
     image_batch = tf.stack(images)  # Create a batch
     predictions = model.predict(image_batch)

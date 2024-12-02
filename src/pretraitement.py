@@ -60,3 +60,4 @@ def preprocess_data(data_dir):
     # Split data
     X_train, X_val, y_train, y_val = train_test_split(filenames, labels, test_size=0.2, random_state=42)
     return X_train, X_val, y_train, y_val, unique_breeds
+
