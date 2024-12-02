@@ -14,7 +14,7 @@ train_data = create_data_batches(X_train, y_train)
 val_data = create_data_batches(X_val, y_val, valid_data=True)
 
 # Train model
-model = train_model(train_data, y_train, val_data, y_val)
+model = train_model(train_data, val_data)
 
 # Predict on new data
 test_images = ["data/dogsftest/doberman.jpg", "data/dogsftest/german_shepherd.jpg"]

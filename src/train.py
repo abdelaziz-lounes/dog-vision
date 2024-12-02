@@ -33,15 +33,19 @@ def create_tensorboard_callback():
     log_dir = os.path.join("logs", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     return tf_keras.callbacks.TensorBoard(log_dir=log_dir)
 
-def train_model(X_train, y_train, X_val, y_val, epochs=NUM_EPOCHS):
+def train_model(train_data, val_data, epochs=NUM_EPOCHS):
     """
     Trains a model and saves it.
     """
     model = create_model()
     tensorboard_cb = create_tensorboard_callback()
+    train_dataset = tf.data.Dataset.from_tensor_slices(train_data)  
+    train_dataset = train_dataset.batch(32)
+    val_dataset = tf.data.Dataset.from_tensor_slices(val_data)
+    val_dataset = val_dataset.batch(32)
     model.fit(
-        X_train, y_train,
-        validation_data=(X_val, y_val),
+        train_dataset,
+        validation_data=val_dataset,
         epochs=epochs,
         callbacks=[tensorboard_cb]
     )
